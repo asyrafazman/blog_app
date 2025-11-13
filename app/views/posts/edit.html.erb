@@ -1,0 +1,14 @@
+<div class="max-w-4xl mx-auto">
+  <div class="bg-white rounded-lg shadow-md p-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">Edit Post</h1>
+    
+    <%= render 'form', post: @post %>
+    
+    <div class="mt-6 flex space-x-4">
+      <%= link_to "Cancel", @post, class: "text-gray-600 hover:text-gray-800" %>
+      <%= button_to "Delete Post", @post, method: :delete,
+          data: { turbo_confirm: "Are you sure you want to delete this post?" },
+          class: "text-red-600 hover:text-red-800" %>
+    </div>
+  </div>
+</div>
