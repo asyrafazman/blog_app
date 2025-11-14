@@ -3,7 +3,7 @@ class Comment < ApplicationRecord
   belongs_to :post
 
   # Validations
-  validates :body, presence: true, length: { minimun: 2, maximum: 1000}
+  validates :body, presence: true, length: { minimum: 2, maximum: 1000}
   validates :user, presence: true
   validates :post, presence: true
 

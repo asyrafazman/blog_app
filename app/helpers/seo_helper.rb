@@ -11,7 +11,7 @@ module SeoHelper
         description: post.excerpt(160),
         type: "article",
         url: post_url(post),
-        image: post.featured_image.attached? ? url_for(post.featured_image) : image_url("default-post.png"),
+        image: post.featured_image.attached? ? url_for(post.featured_image) : nil,
         article: {
           published_time: post.published_at&.iso8601,
           modified_time: post.updated_at.iso8601,
@@ -22,7 +22,7 @@ module SeoHelper
         card: "summary_large_image",
         title: post.title,
         description: post.excerpt(160),
-        image: post.featured_image.attached? ? url_for(post.featured_image) : image_url("default-post.png")
+        image: post.featured_image.attached? ? url_for(post.featured_image) : nil      
       }
     )
   end
@@ -49,7 +49,7 @@ module SeoHelper
       "@type": "BlogPosting",
       headline: post.title,
       description: post.excerpt(160),
-      image: post.featured_image.attached? ? url_for(post.featured_image) : image_url('default-post.png'),
+      image: post.featured_image.attached? ? url_for(post.featured_image) : nil,      
       datePublished: post.published_at&.iso8601,
       dateModified: post.updated_at.iso8601,
       author: {
@@ -61,7 +61,6 @@ module SeoHelper
         name: "BlogApp",
         logo: {
           "@type": "ImageObject",
-          url: image_url("logo.png")
         }
       },
       commentCount: post.comments.count,

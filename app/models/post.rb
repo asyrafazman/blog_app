@@ -2,15 +2,20 @@ class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  # This method tells friendly_id when to regenerate the slug
+  def should_generate_new_friendly_id?
+    title_changed? || slug.blank?
+  end
+
   include PgSearch::Model
 
   belongs_to :user
-  has_one_attached:featured_image
-  has_rich_text:content
-  has_many:comments, dependent: :destroy
+  has_one_attached :featured_image
+  has_rich_text :content
+  has_many :comments, dependent: :destroy
 
   # Validations
-  validates :title, presence: true, length: { minimun: 3, maximum: 200}
+  validates :title, presence: true, length: { minimum: 3, maximum: 200}
   validates :user, presence: true
   validates :featured_image, content_type: ['image/png', 'image/jpeg', 'image/gif'],
                            size: { less_than: 5.megabytes, message: 'must be less than 5MB' },
@@ -50,7 +55,7 @@ class Post < ApplicationRecord
 
   # Check if post is published
   def published?
-    published.at.present? && published_at <= Time.current
+    published_at.present? && published_at <= Time.current
   end
 
   # Auto-set published_at on create if not set

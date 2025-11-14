@@ -18,6 +18,7 @@ before_action :authorize_user!, only: [ :edit, :update, :destroy ]
   def show
     @comment = Comment.new
     @comments = @post.comments.includes(:user).recent
+    @comment = Comment.new
   end
 
   # GET /posts/new
