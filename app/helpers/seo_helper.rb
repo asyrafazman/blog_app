@@ -45,29 +45,29 @@ module SeoHelper
 
   def structured_data_for_post(post)
     {
-      '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
       headline: post.title,
       description: post.excerpt(160),
       image: post.featured_image.attached? ? url_for(post.featured_image) : image_url('default-post.png'),
       datePublished: post.published_at&.iso8601,
       dateModified: post.updated_at.iso8601,
       author: {
-        '@type': 'Person',
+        "@type": "Person",
         name: post.user.name
       },
       publisher: {
-        '@type': 'Organization',
-        name: 'BlogApp',
+        "@type": "Organization",
+        name: "BlogApp",
         logo: {
-          '@type': 'ImageObject',
-          url: image_url('logo.png')
+          "@type": "ImageObject",
+          url: image_url("logo.png")
         }
       },
       commentCount: post.comments.count,
       mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': post_url(post)
+        "@type": "WebPage",
+        "@id": post_url(post)
       }
     }
   end
@@ -76,6 +76,6 @@ module SeoHelper
 
   def extract_keywords(post)
     # Extract first few words from title as keywords
-    post.title.split.first(5).join(', ')
+    post.title.split.first(5).join(", ")
   end
 end
