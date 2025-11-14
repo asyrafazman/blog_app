@@ -1,13 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Blog App</title>
+    <!-- SEO Meta Tags -->
+    <%= display_meta_tags site: 'BlogApp',
+                         title: 'Welcome',
+                         description: 'A modern blog platform for sharing ideas and stories',
+                         keywords: 'blog, articles, writing, stories',
+                         separator: '|',
+                         reverse: true,
+                         og: {
+                           title: :title,
+                           type: 'website',
+                           url: request.original_url,
+                           image: image_url('logo.png'),
+                           site_name: 'BlogApp',
+                           description: :description
+                         },
+                         twitter: {
+                           card: 'summary_large_image',
+                           site: '@yourblog',
+                           title: :title,
+                           description: :description,
+                           image: image_url('logo.png')
+                         } %>
+    
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="<%= request.original_url %>" />
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "BlogApp",
+      "url": "<%= root_url %>",
+      "logo": "<%= image_url('logo.png') %>",
+      "description": "A modern blog platform for sharing ideas and stories"
+    }
+    </script>
   </head>
 
   <body class="bg-gray-50">
@@ -26,7 +70,8 @@
                 <%= f.text_field :query, 
                     placeholder: "Search posts...", 
                     value: params[:query],
-                    class: "w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" %>
+                    class: "w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500",
+                    'aria-label': 'Search posts' %>
                 <%= f.submit "Search", class: "absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-1 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 cursor-pointer" %>
               </div>
             <% end %>
@@ -65,7 +110,7 @@
     <% end %>
     
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" role="main">
       <%= yield %>
     </main>
     

@@ -1,1 +1,14 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+# public/robots.txt
+
+# Allow all search engines
+User-agent: *
+Disallow: /users/sign_in
+Disallow: /users/sign_up
+Disallow: /users/password
+Disallow: /profile/edit
+Disallow: /posts/new
+Disallow: /posts/*/edit
+Allow: /
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml
