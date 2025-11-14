@@ -9,9 +9,9 @@ module SeoHelper
       og: {
         title: post.title,
         description: post.excerpt(160),
-        type: 'article',
+        type: "article",
         url: post_url(post),
-        image: post.featured_image.attached? ? url_for(post.featured_image) : image_url('default-post.png'),
+        image: post.featured_image.attached? ? url_for(post.featured_image) : image_url("default-post.png"),
         article: {
           published_time: post.published_at&.iso8601,
           modified_time: post.updated_at.iso8601,
@@ -19,10 +19,10 @@ module SeoHelper
         }
       },
       twitter: {
-        card: 'summary_large_image',
+        card: "summary_large_image",
         title: post.title,
         description: post.excerpt(160),
-        image: post.featured_image.attached? ? url_for(post.featured_image) : image_url('default-post.png')
+        image: post.featured_image.attached? ? url_for(post.featured_image) : image_url("default-post.png")
       }
     )
   end
@@ -36,9 +36,9 @@ module SeoHelper
       )
     else
       set_meta_tags(
-        title: 'Recent Blog Posts',
-        description: 'Discover the latest articles, stories, and insights from our blog community',
-        keywords: 'blog posts, articles, latest posts, trending articles'
+        title: "Recent Blog Posts",
+        description: "Discover the latest articles, stories, and insights from our blog community",
+        keywords: "blog posts, articles, latest posts, trending articles"
       )
     end
   end

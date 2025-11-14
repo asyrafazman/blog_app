@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
   def show
     @user = current_user
   end
-  
+
   # GET /profile/edit
   def edit
     @user = current_user
@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
     @user = current_user
 
     if @user.update(user_params)
-      redirect_to profile_path, notice: 'Profile was successfull updated.'
+      redirect_to profile_path, notice: "Profile was successfull updated."
     else
       render :edit, status: :inprocessable_entity
     end
