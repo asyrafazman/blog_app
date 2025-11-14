@@ -52,7 +52,7 @@ before_action :authorize_user!, only: [:edit, :update, :destroy]
     # DELETE /posts/:id
   def destroy
     @post.destroy
-    redirect_to post_url, notice: 'Post was successfully deleted.'
+    redirect_to posts_url, notice: 'Post was successfully deleted.'
   end
 
   private
