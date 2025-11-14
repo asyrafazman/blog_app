@@ -40,25 +40,25 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 # User Authentication
-gem 'devise'
+gem "devise"
 
 # Search Functionality
-gem 'pg_search'
+gem "pg_search"
 
 # Pagination
-gem 'kaminari'
+gem "kaminari"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
-gem 'active_storage_validations'
+gem "active_storage_validations"
 
 # Friendly id
-gem 'friendly_id', '~> 5.5.0'
+gem "friendly_id", "~> 5.5.0"
 
 # SEO
-gem 'meta-tags'
-gem 'sitemap_generator'
+gem "meta-tags"
+gem "sitemap_generator"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

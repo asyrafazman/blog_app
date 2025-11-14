@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: [:create]
-  before_action :set_comment, only: [:destroy]
-  before_action :authorize_user!, only: [:destroy]
+  before_action :set_post, only: [ :create ]
+  before_action :set_comment, only: [ :destroy ]
+  before_action :authorize_user!, only: [ :destroy ]
 
   # POST /post/:post_id/comments
   def create
