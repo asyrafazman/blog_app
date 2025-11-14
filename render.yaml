@@ -4,8 +4,8 @@ services:
     env: ruby
     region: singapore
     plan: free
-    buildCommand: "bundle install && bundle exec rake assets:precompile assets:clean"
-    startCommand: "bundle exec rails server -b 0.0.0.0 -p $PORT"
+    buildCommand: "bundle install && bundle exec rake assets:precompile assets:clean db:migrate"
+    startCommand: "bundle exec rails s"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
