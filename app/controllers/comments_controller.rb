@@ -10,9 +10,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to @post, notice: 'Comment was successfully added.'
+      redirect_to @post, notice: "Comment was successfully added."
     else
-      redirect_to @post, alert: 'Unable to add comment. Please try again.'
+      redirect_to @post, alert: "Unable to add comment. Please try again."
     end
   end
 
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
 
   def authorize_user!
     unless @comment.user == current_user
-      redirect_to @comment.post, alert: 'You are not authorized to delete this comment.'
+      redirect_to @comment.post, alert: "You are not authorized to delete this comment."
     end
   end
 
