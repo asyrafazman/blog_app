@@ -20,11 +20,11 @@ class CommentsController < ApplicationController
   def destroy
     post = @comment.post
     @comment.destroy
-    redirect_to post, notice: 'Comment was successfully deleted.'
+    redirect_to post, notice: "Comment was successfully deleted."
   end
 
   private
-  
+
   def set_post
     @post = Post.find(params[:post_id])
   end
