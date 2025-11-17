@@ -18,5 +18,18 @@ test:
   host: localhost
 
 production:
-  <<: *default
-  url: <%= ENV['postgresql://blog_user:ogfSifYw3TfLonsWnj8k9XDrM8BCLTUG@dpg-d4be10npm1nc73bo4mfg-a/blog_app_production_saom'] %>
+  primary:
+    <<: *default
+    url: <%= ENV['postgresql://blog_user:ogfSifYw3TfLonsWnj8k9XDrM8BCLTUG@dpg-d4be10npm1nc73bo4mfg-a.singapore-postgres.render.com/blog_app_production_saom'] %>
+  cache:
+    <<: *default
+    url: <%= ENV['postgresql://blog_user:ogfSifYw3TfLonsWnj8k9XDrM8BCLTUG@dpg-d4be10npm1nc73bo4mfg-a.singapore-postgres.render.com/blog_app_production_saom'] %>
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *default
+    url: <%= ENV['postgresql://blog_user:ogfSifYw3TfLonsWnj8k9XDrM8BCLTUG@dpg-d4be10npm1nc73bo4mfg-a.singapore-postgres.render.com/blog_app_production_saom'] %>
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *default
+    url: <%= ENV['postgresql://blog_user:ogfSifYw3TfLonsWnj8k9XDrM8BCLTUG@dpg-d4be10npm1nc73bo4mfg-a.singapore-postgres.render.com/blog_app_production_saom'] %>
+    migrations_paths: db/cable_migrate
