@@ -54,6 +54,9 @@ Rails.application.configure do
   # config.solid_queue.connects_to = { database: { writing: :queue } }
   config.action_cable.adapter = :async
 
+  # Disable database access during asset precompilation
+  config.assets.initialize_on_precompile = false if ENV['RAILS_ENV'] == 'production'
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
