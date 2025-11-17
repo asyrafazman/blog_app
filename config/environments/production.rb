@@ -52,7 +52,7 @@ Rails.application.configure do
   # Replace the default in-process and non-durable queuing backend for Active Job.
   config.active_job.queue_adapter = :async
   # config.solid_queue.connects_to = { database: { writing: :queue } }
-  config.action_cable.adapter = :async
+  # config.action_cable.adapter = :async
 
   # Disable database access during asset precompilation
   config.assets.initialize_on_precompile = false if ENV['RAILS_ENV'] == 'production'
